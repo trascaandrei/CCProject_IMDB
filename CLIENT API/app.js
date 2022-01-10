@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 require('dotenv').config();
 
 const app = express();
@@ -18,8 +19,9 @@ mongoose.connect(process.env.DB_PATH, {
     console.error('Failed to connect to db: ', err);
 });
 
+app.use(bodyParser.json())
 // Use Api routes in the App
-// require("./routes/api-routes")(app);
+require("./routes/api-routes")(app);
 
 app.listen(port, function() {
     console.log(`Running on port ${port}"..."`);
