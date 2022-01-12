@@ -26,11 +26,11 @@ var userSchema = mongoose.Schema({
         type: String
     },
 
-    lists: {
+    favourites: {
         type: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'List'
+                ref: 'Movie'
             }
         ]
     },
