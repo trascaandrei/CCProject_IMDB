@@ -14,10 +14,11 @@ const addMovie = (req, res, next) => {
     let message = '';
 
     const movie = {
-        title: req.title,
+        title: req.body.title,
         description: req.body.description ? req.body.description : "",
         actors: req.body.actors,
-        rating: req.body.rating ? req.body.rating : 0,
+        rating: 0,
+        ratingsNumber: 0,
         genre: req.body.genre,
         publishYear: req.body.publishYear,
         boxOffice: req.body.boxOffice,
@@ -165,9 +166,45 @@ const favouriteMovie = async (req, res, next) => {
     });
 }
 
+const rateMovie = async (req, res, next) => {
+    if (check(req)) {
+        return next();
+    }
+
+    let message = "";
+    if (!req.id || !req.params.movieId) {
+        message = "No id provided";
+        res.status(400).json({
+            message: message
+        });
+
+        req.warning = message;
+        return next();
+    }
+
+    console.log(`Rating movie with id ${req.params.movieId}...`);
+    movieService.rateMovie(req.body.rate, req.params.movieId).then(() => {
+        res.status(200).json({
+            message: 'Rated successfully'
+        })
+
+        next();
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: "Internal server error"
+        });
+
+        req.error = err;
+        next();
+    });
+}
+
 module.exports = {
     addMovie: addMovie,
     getMovie: getMovie,
     getMovies: getMovies,
     favouriteMovie: favouriteMovie,
+    rateMovie: rateMovie,
 }

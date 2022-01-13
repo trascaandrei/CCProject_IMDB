@@ -17,8 +17,8 @@ router.get('/movie/:movieId', [
 );
 
 router.get('/movies', [
-    authJwt.verifyToken
-],
+        authJwt.verifyToken
+    ],
     movieController.getMovies
 );
 
@@ -26,6 +26,12 @@ router.put('/movie/favourite/:movieId', [
         authJwt.verifyToken
     ],
     movieController.favouriteMovie
+);
+
+router.put('/movie/rate/:movieId', [
+        authJwt.verifyToken
+    ],
+    movieController.rateMovie
 );
 
 module.exports = router;

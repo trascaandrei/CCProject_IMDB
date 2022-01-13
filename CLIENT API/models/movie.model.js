@@ -19,6 +19,10 @@ var movieSchema = mongoose.Schema({
         type: Number
     },
 
+    ratingsNumber: {
+        type: Number
+    },
+
     genre: {
         type: [{
             type: String
