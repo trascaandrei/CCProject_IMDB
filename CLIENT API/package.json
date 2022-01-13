@@ -1,0 +1,27 @@
+{
+  "name": "bachelordegree2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "*",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "*",
+    "express-form-data": "^2.0.16",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.0",
+    "mongoose": "^5.12.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
