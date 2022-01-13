@@ -56,7 +56,7 @@ const getMovie = (req, res, next) => {
     }
 
     let message = "";
-    if (!req.id || !req.params.movieId) {
+    if (!req.params.movieId) {
         message = "No id provided";
         res.status(400).json({
             message: message
@@ -96,15 +96,6 @@ const getMovies = (req, res, next) => {
     }
 
     let message = "";
-    if (!req.id) {
-        message = "No id provided";
-        res.status(400).json({
-            message: message
-        });
-
-        req.warning = message;
-        return next();
-    }
 
     movieService.getAllMovies()
     .then((movies) => {

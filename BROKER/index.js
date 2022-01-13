@@ -9,6 +9,7 @@ const { ServerError } = require('./errors');
 
 const routes = require("./routes");
 const app = express();
+require('dotenv').config();
 
 app.use(helmet());
 app.use(
@@ -19,7 +20,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use("/api", routes);
+app.use("/api", routes);
 
 app.use((err, req, res, next) => {
 	console.error(err);

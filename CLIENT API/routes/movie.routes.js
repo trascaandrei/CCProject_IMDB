@@ -2,7 +2,6 @@ const router = require('express').Router();
 const authJwt = require('../middlewares/authJwt.middleware');
 const movieController = require('../controllers/movie.controller');
 
-
 // Movie management
 router.post('/movie', [
         authJwt.verifyToken,
@@ -10,17 +9,9 @@ router.post('/movie', [
     movieController.addMovie
 );
 
-router.get('/movie/:movieId', [
-        authJwt.verifyToken
-    ],
-    movieController.getMovie
-);
+router.get('/movie/:movieId', movieController.getMovie);
 
-router.get('/movies', [
-        authJwt.verifyToken
-    ],
-    movieController.getMovies
-);
+router.get('/movies', movieController.getMovies);
 
 router.put('/movie/favourite/:movieId', [
         authJwt.verifyToken
