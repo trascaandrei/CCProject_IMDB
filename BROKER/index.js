@@ -5,7 +5,7 @@ const createError = require("http-errors");
 
 require("express-async-errors");
 require("log-timestamp");
-// const { ServerError } = require('./errors');
+const { ServerError } = require('./errors');
 
 const routes = require("./routes");
 const app = express();
