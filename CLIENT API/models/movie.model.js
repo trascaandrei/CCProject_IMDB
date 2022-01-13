@@ -20,7 +20,9 @@ var movieSchema = mongoose.Schema({
     },
 
     genre: {
-        type: String
+        type: [{
+            type: String
+        }]
     },
 
     publishYear: {

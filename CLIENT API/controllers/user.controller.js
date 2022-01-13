@@ -62,7 +62,7 @@ const editUser = (req, res, next) => {
 
     let message = "";
 
-    if (req.body.lists || req.body.password) {
+    if (req.body.favourites || req.body.password) {
         message = "Unauthorized";
 
         res.status(400).json({

@@ -42,6 +42,7 @@ const findUserById = (id) => {
                email: true,
                firstName: true,
                lastName: true,
+               favourites: true,
             }
          }
     ]);
@@ -100,32 +101,18 @@ const updatePassword = (id, password) => {
     });
 };
 
-const getUsersByIds = (ids) => {
-    return User.aggregate([
-        {
-            $match: {
-                _id: {
-                    $in: ids
-                },
-            }
-        },
-        {
-            $lookup: {
-                from: "users",
-                localField: "_id",
-                foreignField: "_id",
-                as: "allUsers"
-            }
-        },
-        {
-            $unwind: "$allUsers"
-        },
-        {
-            $project: {
-                username: true,
-            }
+const favouriteMovie = async (movieId, userId) => {
+    const filter = {
+        _id: userId
+    };
+
+    const updates = {
+        $push: {
+            favourites: ObjectId(movieId)
         }
-    ])
+    };
+
+    return User.updateOne(filter, updates);
 }
 
 module.exports = {
@@ -134,6 +121,6 @@ module.exports = {
     findUserById: findUserById,
     createUser: createUser,
     updateUser: updateUser,
-    getUsersByIds: getUsersByIds,
     updatePassword: updatePassword,
+    favouriteMovie: favouriteMovie,
 }
