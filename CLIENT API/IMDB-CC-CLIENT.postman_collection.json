@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "d375b585-dbbc-4f72-8923-099d82ea90c9",
+		"name": "IMDB-CC-CLIENT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "test_lepus_service"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\",\n    \"firstName\": \"NUME\",\n    \"lastName\": \"PRENUME\",\n    \"username\": \"test3_basic\",\n    \"password\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test3@test.com\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Info",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"test2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Avatar2\",\n    \"description\": \"A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.\",\n    \"actors\": [\"Sam Worthington\",\"Zoe Saldana\",\"Sigourney Weaver\",\"Stephen Lang\"],\n    \"genre\": [\"action\",\"fantasy\"],\n    \"publishYear\": \"2009\",\n    \"boxOffice\": 10000000,\n    \"budget\": 1000000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/movie",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/movie/61df6883a11d7d3de83cd68a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movie",
+						"61df6883a11d7d3de83cd68a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Movies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rate\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/movie/rate/61df6fcca9fb5744c899a9dc",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movie",
+						"rate",
+						"61df6fcca9fb5744c899a9dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Movie To Favourites",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZGY2NGM4ZWE5YzYxM2MwNjIwNTc4OCIsImlhdCI6MTY0MjAzMDI4MCwiZXhwIjoxNjQyMTE2NjgwfQ.Xt3AfFUsj263wMGv6owbwRXr0m_jsL7bb72wLiqfh14",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/movie/favourite/61df6883a11d7d3de83cd68a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movie",
+						"favourite",
+						"61df6883a11d7d3de83cd68a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
