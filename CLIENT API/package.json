@@ -13,7 +13,7 @@
     "body-parser": "*",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
-    "express": "*",
+    "express": "^4.17.2",
     "express-form-data": "^2.0.16",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.0",
