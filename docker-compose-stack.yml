@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:3.6.2
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+    networks:
+      - database
+      - database-admin
+  adminer:
+    image: dockette/adminer:mongo
+    ports:
+      - 8000:80
+    networks:
+      - database-admin
+  client_api:
+    image: radupirosca/client_api
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - PORT=3001
+      - DB_PATH=mongodb://user:1234@db
+    ports:
+      - 3001:3001
+    networks:
+      - database
+      - client
+    command: bash -c "sleep 3 && npm start"
+  processor_api:
+    image: radupirosca/processor_api
+    ports:
+      - 3002:3002
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - PORT=3002
+      - DB_PATH=mongodb://user:1234@db
+    networks:
+      - database
+      - processor
+    command: bash -c "sleep 3 && node index.js"
+  broker:
+    image: radupirosca/broker
+    environment:
+      - CLIENT_API_ROUTE=client:3001/api
+      - FLITER_API_ROUTE=processor:3002/api/filter
+      - PORT=80
+    ports:
+      - 80:80
+    networks:
+      - processor
+      - client
+      - extern
+    command: bash -c "sleep 3 && node index.js"
+volumes:
+  mongodb:
+    driver: "local"
+  mongodump:
+    driver: "local"
+networks:
+  database:
+  database-admin:
+  processor:
+  client:
+  extern:

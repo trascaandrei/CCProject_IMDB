@@ -7,11 +7,10 @@ const { ServerError } = require('./errors');
 const router = require('express').Router();
 
 require("express-async-errors");
-require('dotenv').config();
+// require('dotenv').config();
 
 const app = express()
 const port = process.env.PORT || 3002;
-
 mongoose.connect(process.env.DB_PATH, {
     useNewUrlParser: true, 
     useUnifiedTopology: true

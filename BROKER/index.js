@@ -9,7 +9,7 @@ const { ServerError } = require('./errors');
 
 const routes = require("./routes");
 const app = express();
-require('dotenv').config();
+// require('dotenv').config();
 
 app.use(helmet());
 app.use(
