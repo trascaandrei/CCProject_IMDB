@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "e33e6ffa-54b4-417d-b711-563e9db92073",
+		"name": "IMDB-CC-PROC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filter movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filter\": {\n        \"actor\": \"\",\n        \"title\": \"\",\n        \"publishYear\": {\n            \"min\": 2003,\n            \"max\": 2010\n        },\n        \"rating\": {\n            \"min\":0,\n            \"max\":6\n        },\n        \"genre\": \"\",\n        \"boxOffice\": {\n            \"min\":0,\n            \"max\":10000000\n        },\n        \"budget\": {\n            \"min\":0,\n            \"max\":10000000\n        }\n    },\n    \"sort\": [{\n        \"key\": \"boxOffice\",\n        \"asc\": true\n        \n    },\n    {\n        \"key\": \"title\"\n    }],\n    \"limit\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{port}}/api/filter",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
