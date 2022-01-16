@@ -12,6 +12,11 @@ services:
     networks:
       - database
       - database-admin
+    deploy:
+          placement:
+              constraints:
+                  - "node.role==manager"
+
   adminer:
     image: dockette/adminer:mongo
     ports:
@@ -30,6 +35,16 @@ services:
     networks:
       - database
       - client
+    deploy:
+            replicas: 3
+            placement:
+                max_replicas_per_node: 2
+            update_config:
+                parallelism: 2
+                order: start-first
+            rollback_config:
+                parallelism: 2
+                order: stop-first
     command: bash -c "sleep 3 && npm start"
   processor_api:
     image: radupirosca/processor_api
@@ -43,6 +58,14 @@ services:
     networks:
       - database
       - processor
+    deploy:
+          replicas: 2
+          placement:
+              max_replicas_per_node: 1
+          update_config:
+              order: start-first
+          rollback_config:
+              order: stop-first
     command: bash -c "sleep 3 && node index.js"
   broker:
     image: radupirosca/broker
@@ -56,6 +79,16 @@ services:
       - processor
       - client
       - extern
+    deploy:
+            replicas: 3
+            placement:
+                max_replicas_per_node: 2
+            update_config:
+                parallelism: 2
+                order: start-first
+            rollback_config:
+                parallelism: 2
+                order: stop-first
     command: bash -c "sleep 3 && node index.js"
 volumes:
   mongodb:
